@@ -1,0 +1,83 @@
+<ion-view view-title="Welcome!!">
+    <div class="bar bar-header bar-balanced">
+        <h1 class="title">Whats On</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
+        <div class="list">
+
+            <div class="item border-bottom">
+                <h2 class="title">Quintana en el podio (150)</h2>
+            </div>
+
+            <div ng-repeat="item in threadMessages" class="row">
+                <div class="col col-80">
+                    <div class="message">
+                        {{ item.title }}
+                    </div>
+                    <div class="time left">
+                        hace 2 horas
+                    </div>
+
+                </div>
+                <div class="col col-20 center">
+                    <img src="img/female.png" />
+                    <br />{{ item.name }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-20 center">
+                    <img src="img/male.png" />
+                    <br />Tú
+                </div>
+                <div class="col col-80">
+                    <div class="message">
+                        Nairo merece estar en el podio, ha tenido mucha presión
+                    </div>
+                    <div class="time right">
+                        hace 10 minutos
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-80">
+                    <div class="message">
+                        Han sido días muy duros, pero vamos con toda!!
+                    </div>
+                    <div class="time left">
+                        hace 2 horas
+                    </div>
+
+                </div>
+                <div class="col col-20 center">
+                    <img src="img/female.png" />
+                    <br />Yohana Velasquez
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-80">
+                    <div class="message">
+                        El tour es la mejor compentencia del mundo, a nadie se le debería olvidar
+                    </div>
+                    <div class="time left">
+                        ayer
+                    </div>
+
+                </div>
+                <div class="col col-20 center">
+                    <img src="img/male.png" />
+                    <br />Camilo Perez
+                </div>
+            </div>
+
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer">
+        <input type="text" placeholder="Ingresa tu comentario" ng-model="inputMessage.text" >
+        <img src="img/send.png" ng-click="addComment()"  />
+    </div>
+</ion-view>
