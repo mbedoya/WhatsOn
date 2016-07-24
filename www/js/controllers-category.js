@@ -1,32 +1,24 @@
-controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $location, Utility) {
+controllersModule.controller('CategoryCtrl', function ($scope, $rootScope, $location, $ionicHistory, $ionicLoading) {
 
-    $scope.doLogin = function () {
-        $location.path('/app/setup-name');
+    $scope.doLogin = function(){
+        $location.path('/app/setup-name');   
     }
 
-    $scope.isItMyPost = function (post) {
-        return post.uid == $rootScope.userProfile.uid;
+    $scope.gotoAddThread = function(){
+        alert($rootScope.userProfile.registered);   
     }
 
-    $scope.getDateText = function(post){
-        return Utility.getDateDiffFormatted(post.time);
-    }
+    $scope.addComment = function(){
 
-    $scope.addComment = function () {
-
-        var uid = $rootScope.userProfile.uid;
+        var uid = "ZuUGOZYUGnh7pZArvMSnkTsxlN82";
         var newPostKey = firebase.database().ref().child('posts').push().key;
-
-        var postData = {
-            title: $scope.inputMessage.text,
-            name: $rootScope.userProfile.name,
-            uid: uid,
-            time: Utility.getCurrentDate()
-        };
+        var postData = { title: $scope.inputMessage.text, name: 'Mauricio Bedoya', time: '2016/07/23' };
 
         var updates = {};
         updates['/posts/' + newPostKey] = postData;
         updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+        console.log(updates);
 
         firebase.database().ref().update(updates);
     }
@@ -37,6 +29,7 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
         $scope.threadMessages = new Array();
 
         var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
+        console.log(recentPostsRef);
 
         /*
         // Find current messages
@@ -53,7 +46,10 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
 
         // Attach an asynchronous callback to read the data at our posts reference
         recentPostsRef.on("child_added", function (snapshot) {
+            console.log("new children");
             $scope.threadMessages.splice(0, 0, snapshot.val());
+            console.log(snapshot.val());
+
             $scope.$apply();
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);

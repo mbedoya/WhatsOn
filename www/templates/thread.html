@@ -1,8 +1,5 @@
-<ion-view view-title="Welcome!!">
-    <div class="bar bar-header bar-balanced">
-        <h1 class="title">Whats On</h1>
-    </div>
-    <ion-content class="padding extra-top-padding">
+<ion-view view-title="Whats On">
+    <ion-content>
         <div class="list">
 
             <div class="item border-bottom">
@@ -10,35 +7,39 @@
             </div>
 
             <div ng-repeat="item in threadMessages" class="row">
-                <div class="col col-80">
+
+                <!-- Others -->
+
+                <div class="col col-80" ng-if="!isItMyPost(item)" >
                     <div class="message">
                         {{ item.title }}
                     </div>
                     <div class="time left">
                         hace 2 horas
                     </div>
-
                 </div>
-                <div class="col col-20 center">
+
+                <div class="col col-20 center" ng-if="!isItMyPost(item)">
                     <img src="img/female.png" />
                     <br />{{ item.name }}
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col col-20 center">
+                <!-- Mine -->
+
+                <div class="col col-20 center" ng-if="isItMyPost(item)">
                     <img src="img/male.png" />
                     <br />Tú
                 </div>
-                <div class="col col-80">
+
+                <div class="col col-80" ng-if="isItMyPost(item)">
                     <div class="message">
-                        Nairo merece estar en el podio, ha tenido mucha presión
+                        {{ item.title }}
                     </div>
                     <div class="time right">
-                        hace 10 minutos
+                        {{ getDateText(item) }}
                     </div>
-
                 </div>
+
             </div>
 
             <div class="row">
@@ -73,11 +74,27 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col">
+                    &nbsp;
+                </div>
+            </div>
+
         </div>
 
     </ion-content>
-    <div class="bar bar-footer">
-        <input type="text" placeholder="Ingresa tu comentario" ng-model="inputMessage.text" >
-        <img src="img/send.png" ng-click="addComment()"  />
+
+
+    <div class="bar bar-footer" ng-if="userProfile.registered">
+        <input type="text" placeholder="Ingresa tu comentario" ng-model="inputMessage.text">
+            <img src="img/send.png" ng-click="addComment()" />
+    </div>
+
+    <div class="bar bar-footer" ng-if="!userProfile.registered">
+            <h3 class="title">Debes iniciar sesión para participar</h3>
+            <div class="buttons" ng-click="doLogin()">
+                <button class="button">Inicia sesi&oacute;n</button>
+            </div>
+        </div>
     </div>
 </ion-view>

@@ -16,6 +16,10 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
         $location.path('/app/thread');
     }
 
+    $scope.gotoCategory = function(){
+        $location.path('/app/category');
+    }
+
     $scope.showContinue = function () {
         if (localStorage && localStorage.mobileVerified) {
             return false;

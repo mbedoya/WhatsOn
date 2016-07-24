@@ -1,0 +1,28 @@
+<ion-view view-title="Whats On">
+    <ion-content >
+
+        <div class="list">
+
+            <div class="item no-background">
+                <h2>Paso 1 de 2</h2>
+                <p>Ingresa tu nombre</p>
+
+            </div>
+
+            <label class="item item-input">
+                <input ng-model="userProfile.name" type="text" placeholder="Ejemplo: Marco R&iacute;os" maxlength="30" >
+            </label>
+
+            <label class="item">
+                <p class="text-description">* Tu nombre ser&aacute; usado para indicar tu actividad en nuestra Red.</p>
+            </label>
+
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer button-footer">
+        <button class="button button-block" ng-click="continue()">
+            Continuar
+        </button>
+    </div>
+</ion-view>

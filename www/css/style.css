@@ -23,6 +23,14 @@ h2.title{
     color: #48A9A6;
 }
 
+input[type=text]{
+    border: 1px solid #CCC;
+    padding-left: 10px;
+    margin-left: 5px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
 .item{
     border-color: #FFF;
     margin: 0px;
@@ -92,13 +100,30 @@ h2.title{
     text-align: center;
 }
 
-.bar input{
+.bar-footer{
+    background-color: #EDB458;
+}
+
+.bar-footer input[type=text]{
     width: 100%;
-    padding-left: 10px;
-    margin-left: 5px;
+}
+
+.bar-footer .title{
+    font-size: 13px;
+    color: #666;
 }
 
 .bar-footer img{
     max-width: 40px !important;
     max-height: 40px !important;
+}
+
+.button-footer{
+    background-color: #FFF;
+    height: 50px;
+}
+
+.button-footer button{
+    color: #FFF;
+    background-color: #EDB458;
 }
