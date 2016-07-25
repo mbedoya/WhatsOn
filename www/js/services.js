@@ -1,36 +1,4 @@
-angular.module('whatson.services', [])
-    .factory('Thread', function ($rootScope, Utility) {
-
-
-        return {
-            sendMessage: function (message) {
-
-                var uid = $rootScope.userProfile.uid;
-                var newPostKey = firebase.database().ref().child('posts').push().key;
-
-                var postData = {
-                    title: message,
-                    name: $rootScope.userProfile.name,
-                    uid: uid,
-                    time: Utility.getCurrentDate()
-                };
-
-                var updates = {};
-                updates['/posts/' + newPostKey] = postData;
-                updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-                firebase.database().ref().update(updates);
-            },
-            attachToChildren: function (fx, fxError) {
-
-                var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
-
-                // Attach an asynchronous callback to read the data at our posts reference
-                recentPostsRef.on("child_added", fx, fxError);
-            }
-        }
-    })
-
+var servicesModule = angular.module('whatson.services', [])
     .factory('User', function ($rootScope, Utility) {
 
 
@@ -91,6 +59,13 @@ angular.module('whatson.services', [])
                 if (result == 0) {
 
                     var diferenciaHoras = Math.floor(diferenciaTiempo / (1000 * 3600));
+
+                    //was it yesterday?
+                    if(startDate.getDate() != endDate.getDate()
+                        && startDate.getMonth == endDate.getMonth()
+                        && startDate.getFullYear() == endDate.getFullYear()){
+                            return "ayer";
+                        }
 
                     if (diferenciaHoras <= 12) {
 

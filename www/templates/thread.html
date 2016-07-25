@@ -10,8 +10,13 @@
 
                 <!-- Others -->
 
+                <div class="col col-20 center" ng-if="!isItMyPost(item)">
+                    <img src="img/female.png" />
+                    <br />{{ item.name }}
+                </div>
+
                 <div class="col col-80" ng-if="!isItMyPost(item)" >
-                    <div class="message">
+                    <div class="others-message">
                         {{ item.title }}
                     </div>
                     <div class="time left">
@@ -19,21 +24,11 @@
                     </div>
                 </div>
 
-                <div class="col col-20 center" ng-if="!isItMyPost(item)">
-                    <img src="img/female.png" />
-                    <br />{{ item.name }}
-                </div>
-
                 <!-- Mine -->
 
-                <div class="col col-20 center" ng-if="isItMyPost(item)">
-                    <img src="img/male.png" />
-                    <br />Tú
-                </div>
-
-                <div class="col col-80" ng-if="isItMyPost(item)">
+                <div class="col col-80 col-offset-20 right" ng-if="isItMyPost(item)">
                     <div class="message">
-                        {{ item.title }}
+                        {{ item.title }}<br />
                     </div>
                     <div class="time right">
                         {{ getDateText(item) }}
