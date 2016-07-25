@@ -16,6 +16,9 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
         $rootScope.showLoadingIndicator = true;
         Thread.sendMessage($scope.inputMessage.text);
         $rootScope.showLoadingIndicator = false;
+
+        //Clear input 
+        $scope.inputMessage.text = '';
     }
 
     $scope.initialize = function () {
