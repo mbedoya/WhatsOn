@@ -1,4 +1,4 @@
-// Ionic Starter App
+// Ionic WhatsOn App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -33,8 +33,8 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
         $rootScope.userProfile = {
             registered: true,
             name: localStorage.wo_name,
-            uid: localStorage.wo_name,
-            gender: localStorage.wo_name
+            uid: localStorage.wo_uid,
+            gender: localStorage.wo_gender
         }
     }else{
         //Init Empty Basic Data

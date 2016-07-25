@@ -1,4 +1,28 @@
 angular.module('whatson.services', [])
+    .factory('Thread', function ($rootScope, Utility) {
+
+
+        return {
+            sendMessage: function (message) {
+
+                var uid = $rootScope.userProfile.uid;
+                var newPostKey = firebase.database().ref().child('posts').push().key;
+
+                var postData = {
+                    title: message,
+                    name: $rootScope.userProfile.name,
+                    uid: uid,
+                    time: Utility.getCurrentDate()
+                };
+
+                var updates = {};
+                updates['/posts/' + newPostKey] = postData;
+                updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+                firebase.database().ref().update(updates);
+            }
+        }
+    })
     .factory('Utility', function () {
 
         this.padStr = function (i) {
@@ -30,12 +54,12 @@ angular.module('whatson.services', [])
 
                     if (diferenciaHoras <= 12) {
 
-                        if(diferenciaHoras == 0){
+                        if (diferenciaHoras == 0) {
 
                             var diferenciaMinutos = Math.floor(diferenciaTiempo / (1000 * 60));
 
-                            if(diferenciaMinutos == 0){
-                                return "recién";    
+                            if (diferenciaMinutos == 0) {
+                                return "recién";
                             }
 
                             return "hace " + diferenciaMinutos + " minutos";

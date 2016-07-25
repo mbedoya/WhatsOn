@@ -1,4 +1,4 @@
-controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $location, Utility) {
+controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $location, Utility, Thread) {
 
     $scope.doLogin = function () {
         $location.path('/app/setup-name');
@@ -13,22 +13,9 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
     }
 
     $scope.addComment = function () {
-
-        var uid = $rootScope.userProfile.uid;
-        var newPostKey = firebase.database().ref().child('posts').push().key;
-
-        var postData = {
-            title: $scope.inputMessage.text,
-            name: $rootScope.userProfile.name,
-            uid: uid,
-            time: Utility.getCurrentDate()
-        };
-
-        var updates = {};
-        updates['/posts/' + newPostKey] = postData;
-        updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-        firebase.database().ref().update(updates);
+        $rootScope.showLoadingIndicator = true;
+        Thread.sendMessage($scope.inputMessage.text);
+        $rootScope.showLoadingIndicator = false;
     }
 
     $scope.initialize = function () {
@@ -37,19 +24,6 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
         $scope.threadMessages = new Array();
 
         var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
-
-        /*
-        // Find current messages
-        recentPostsRef.once("value", function (snapshot) {
-            console.log("all data");
-            $scope.threadMessages = snapshot.val();
-            console.log(snapshot.val());
-
-            $scope.$apply();
-        }, function (errorObject) {
-            console.log("The read failed: " + errorObject.code);
-        });
-        */
 
         // Attach an asynchronous callback to read the data at our posts reference
         recentPostsRef.on("child_added", function (snapshot) {
