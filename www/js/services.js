@@ -20,6 +20,13 @@ angular.module('whatson.services', [])
                 updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
                 firebase.database().ref().update(updates);
+            },
+            AttachToChildren: function (fx, fxError) {
+
+                var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
+
+                // Attach an asynchronous callback to read the data at our posts reference
+                recentPostsRef.on("child_added", fx, fxError);
             }
         }
     })

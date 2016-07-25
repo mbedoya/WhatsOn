@@ -23,16 +23,12 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
         $scope.inputMessage = { text: '' };
         $scope.threadMessages = new Array();
 
-        var recentPostsRef = firebase.database().ref('posts').limitToLast(100);
-
-        // Attach an asynchronous callback to read the data at our posts reference
-        recentPostsRef.on("child_added", function (snapshot) {
+        Thread.attachToChildren(function (snapshot) {
             $scope.threadMessages.splice(0, 0, snapshot.val());
             $scope.$apply();
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
-
     }
 
     $scope.initialize();
