@@ -1,4 +1,4 @@
-controllersModule.controller('SetupGenderCtrl', function ($scope, $rootScope, $location, Utility, Thread) {
+controllersModule.controller('SetupGenderCtrl', function ($scope, $rootScope, $location, User) {
 
     $scope.selectGender = function(gender) {
 
