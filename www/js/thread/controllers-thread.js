@@ -24,7 +24,11 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
             console.log("all data");
             var temp = snapshot.val();
             console.log(temp);
-            $scope.threadMessages = temp;
+            for(var o in temp){
+                console.log(o.val().name);
+                $scope.threadMessages.push(o.val());
+            }
+            //$scope.threadMessages = temp;
             $scope.$broadcast('scroll.infiniteScrollComplete');
             $scope.$apply();
 

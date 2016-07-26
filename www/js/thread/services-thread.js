@@ -30,7 +30,7 @@ servicesModule
             },
             getAll: function (fx, fxError) {
 
-                var recentPostsRef = firebase.database().ref('posts').limitToLast(20);
+                var recentPostsRef = firebase.database().ref('posts/').limitToLast(20);
 
                 // Attach an asynchronous callback to read the data at our posts reference
                 recentPostsRef.once("value", fx, fxError);
