@@ -20,11 +20,19 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
         $scope.doInfiteScroll = false;
 
         Thread.getAll(function (snapshot) {
-
-            console.log("all data");
             var temp = snapshot.val();
-            console.log(temp);
-            $scope.threadMessages = temp;
+            var i = 0;
+            var tempA = new Array();
+            for(var o in temp){
+                i = i+1;
+                if(i < 10){
+                    tempA.splice(0,0,temp[o]);
+                }
+            }
+            for(i=0; i<tempA.length; i++){
+                $scope.threadMessages.push(tempA[i]);
+            }
+            
             $scope.$broadcast('scroll.infiniteScrollComplete');
             $scope.$apply();
 
