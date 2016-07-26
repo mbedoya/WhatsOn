@@ -8,8 +8,29 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
         return post.uid == $rootScope.userProfile.uid;
     }
 
-    $scope.getDateText = function(post){
+    $scope.getDateText = function (post) {
         return Utility.getDateDiffFormatted(post.time);
+    }
+
+
+
+    $scope.loadMore = function () {
+        console.log("load more");
+
+        $scope.doInfiteScroll = false;
+
+        Thread.getAll(function (snapshot) {
+
+            console.log("all data");
+            var temp = snapshot.val();
+            console.log(temp);
+            $scope.threadMessages = temp;
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.$apply();
+
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+        });
     }
 
     $scope.addComment = function () {
@@ -24,6 +45,7 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
 
     $scope.initialize = function () {
 
+        $scope.doInfiteScroll = true; 
         $scope.inputMessage = { text: '' };
         $scope.threadMessages = new Array();
 
