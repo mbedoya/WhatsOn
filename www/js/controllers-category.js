@@ -1,7 +1,9 @@
 controllersModule.controller('CategoryCtrl', function ($scope, $rootScope, $location, Topic) {
 
-    $scope.gotoAddTopic = function(){
-        $location.path('/app/add-topic');   
+    $scope.gotoThread = function(item){
+
+        $rootScope.selectedTopic = item;
+        $location.path('/app/thread');
     }
 
     $scope.initialize = function () {

@@ -50,7 +50,7 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
     $scope.addComment = function () {
 
         $rootScope.showLoadingIndicator = true;
-        Thread.sendMessage($scope.inputMessage.text);
+        Thread.addMessage($scope.inputMessage.text);
         $rootScope.showLoadingIndicator = false;
 
         //Clear input 

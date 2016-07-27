@@ -95,7 +95,7 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
                 url: '/setup-name',
                 views: {
                     'app-view': {
-                        templateUrl: 'templates/setup-name.html',
+                        templateUrl: 'templates/security/setup-name.html',
                         controller: 'SetupNameCtrl'
                     }
                 }
@@ -105,7 +105,7 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
                 url: '/setup-gender',
                 views: {
                     'app-view': {
-                        templateUrl: 'templates/setup-gender.html',
+                        templateUrl: 'templates/security/setup-gender.html',
                         controller: 'SetupGenderCtrl'
                     }
                 }

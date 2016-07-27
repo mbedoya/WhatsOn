@@ -6,7 +6,7 @@
                 <h2 class="title">Polemizar</h2>
             </div>
 
-            <a ng-repeat="item in topics" class="item item-thumbnail-left item-icon-right small-thumbnail" ng-click="gotoThread()">
+            <a ng-repeat="item in topics" class="item item-thumbnail-left item-icon-right small-thumbnail" ng-click="gotoThread(item)">
                 <img src="img/chat.png" >
                 <p>{{ item.title }} (150)</p>
                 <i class="icon ion-ios-arrow-right"></i>

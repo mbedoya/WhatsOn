@@ -29,6 +29,13 @@ servicesModule
 
                 // Attach an asynchronous callback to read the data at our posts reference
                 recentPostsRef.once("value", fx, fxError);
+            },
+            getLastTopic: function (fx, fxError) {
+
+                var recentPostsRef = firebase.database().ref(fb_object_name).limitToLast(1);
+
+                // Attach an asynchronous callback to read the data at our posts reference
+                recentPostsRef.once("value", fx, fxError);
             }
         }
     });
