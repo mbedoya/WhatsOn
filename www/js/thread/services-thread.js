@@ -1,25 +1,18 @@
 servicesModule
-    .factory('Thread', function ($rootScope, Utility, Security) {
+    .factory('Thread', function ($rootScope, Utility, Firebase, Security) {
 
         var fb_object_name = 'topic-threads';
 
         return {
             addMessage: function (message) {
 
-                var newPostKey = firebase.database().ref().child('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key).push().key;
-
-                var postData = {
+                var data = {
                     title: message,
                     name: Security.getUserName(),
-                    gender: Security.getUserGender(),
-                    uid: Security.getUserID(),
-                    time: Utility.getCurrentDate()
+                    gender: Security.getUserGender()
                 };
 
-                var updates = {};
-                updates['/'+ fb_object_name +'/' + $rootScope.selectedTopic.key + '/' + newPostKey ] = postData;
-
-                firebase.database().ref().update(updates);
+                Firebase.saveObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, data);
             },
             attachToChildren: function (fx, fxError) {
 

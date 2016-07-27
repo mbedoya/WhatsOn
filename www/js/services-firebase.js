@@ -12,7 +12,9 @@ servicesModule
                     name: Security.getUserName(),
                     uid: Security.getUserID(),
                 };
+                
                 dataObject["time"] = Utility.getCurrentDate();
+                dataObject["key"] = newObjectKey;
 
                 console.log(dataObject);
 

@@ -1,4 +1,4 @@
-controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $location, Utility, Thread) {
+controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $location, Utility, Thread, Security) {
 
     $scope.doLogin = function () {
         $rootScope.returnPath = "/app/thread";
@@ -6,7 +6,12 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
     }
 
     $scope.isItMyPost = function (post) {
-        return post.uid == $rootScope.userProfile.uid;
+
+        if(Security.userIsAuthenticated()){
+            return post.creator.uid == Security.getUserID();
+        }
+
+        return false;
     }
 
     $scope.getDateText = function (post) {
