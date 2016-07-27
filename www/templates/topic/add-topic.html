@@ -1,0 +1,25 @@
+<ion-view view-title="Whats On">
+    <ion-content >
+
+        <div class="list">
+
+            <div class="item no-background">
+                <p>Ingresa el nombre para la conversaci&oacute;n</p>
+            </div>
+
+            <label class="item item-input">
+                <input ng-model="topic.name" type="text" placeholder="Ejemplo: Colombia en los olímpicos" maxlength="30" >
+            </label>
+
+            <label class="item">
+                <p class="text-description">* El nombre del nuevo tema</p>
+            </label>
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer button-footer">
+        <button class="button button-block" ng-click="continue()">
+            Continuar
+        </button>
+    </div>
+</ion-view>

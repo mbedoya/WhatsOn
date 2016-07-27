@@ -1,6 +1,7 @@
 controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $location, Utility, Thread) {
 
     $scope.doLogin = function () {
+        $rootScope.returnPath = "/app/thread";
         $location.path('/app/setup-name');
     }
 
@@ -11,8 +12,6 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
     $scope.getDateText = function (post) {
         return Utility.getDateDiffFormatted(post.time);
     }
-
-
 
     $scope.loadMore = function () {
         console.log("load more");

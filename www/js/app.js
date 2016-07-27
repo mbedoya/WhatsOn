@@ -71,6 +71,16 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
                 }
             })
 
+            .state('app.add-topic', {
+                url: '/add-topic',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/topic/add-topic.html',
+                        controller: 'AddTopicCtrl'
+                    }
+                }
+            })
+
             .state('app.category', {
                 url: '/category',
                 views: {

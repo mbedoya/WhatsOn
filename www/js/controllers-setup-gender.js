@@ -5,11 +5,9 @@ controllersModule.controller('SetupGenderCtrl', function ($scope, $rootScope, $l
         $rootScope.showLoadingIndicator = true;
         $rootScope.userProfile.gender = gender;
         $rootScope.showLoadingIndicator = false;
-
         User.register(gender);
 
-        $location.path('/app/thread');
-
+        $location.path($rootScope.returnPath);
     }
 
     $scope.initialize = function () {
