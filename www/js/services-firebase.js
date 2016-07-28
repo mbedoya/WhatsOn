@@ -27,6 +27,10 @@ servicesModule
                         fx(error);
                     }
                 });
+            },
+            getObject: function (object, fx, fxError) {
+                var recentPostsRef = firebase.database().ref(object);
+                recentPostsRef.once("value", fx, fxError);
             }
         }
     });

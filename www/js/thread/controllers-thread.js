@@ -28,7 +28,6 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
 
             console.log(temp);
             for(var o in temp){
-                console.log(o.val().name);
                 $scope.threadMessages.push(o.val());
             }
             

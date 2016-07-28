@@ -15,6 +15,7 @@ servicesModule
                 Firebase.saveObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, data, fx);
 
                 //Its parent count needs to be updated
+                
             },
             attachToChildren: function (fx, fxError) {
 
