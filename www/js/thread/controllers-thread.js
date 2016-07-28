@@ -54,9 +54,17 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
 
     $scope.addComment = function () {
 
+        $scope.error = false;
+
         $rootScope.showLoadingIndicator = true;
-        Thread.addMessage($scope.inputMessage.text);
-        $rootScope.showLoadingIndicator = false;
+        Thread.addMessage($scope.inputMessage.text, function(error){
+            $rootScope.showLoadingIndicator = false;
+            if(error){
+                $scope.error = true;
+                console.log(error);
+            }
+            $scope.$apply();
+        });
 
         //Clear input 
         $scope.inputMessage.text = '';

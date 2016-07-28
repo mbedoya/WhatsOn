@@ -10,8 +10,7 @@ servicesModule
                 //Set object data
                 var data = {
                     title: topic,
-                    name: $rootScope.userProfile.name,
-                    gender: $rootScope.userProfile.gender,
+                    count: 0
                 };
 
                 Firebase.saveObject(fb_object_name, data);

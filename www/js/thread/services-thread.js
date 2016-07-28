@@ -4,7 +4,7 @@ servicesModule
         var fb_object_name = 'topic-threads';
 
         return {
-            addMessage: function (message) {
+            addMessage: function (message, fx) {
 
                 var data = {
                     title: message,
@@ -12,7 +12,9 @@ servicesModule
                     gender: Security.getUserGender()
                 };
 
-                Firebase.saveObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, data);
+                Firebase.saveObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, data, fx);
+
+                //Its parent count needs to be updated
             },
             attachToChildren: function (fx, fxError) {
 

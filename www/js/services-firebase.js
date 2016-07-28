@@ -1,8 +1,8 @@
 servicesModule
-    .factory('Firebase', function ($rootScope, Utility, Security){
+    .factory('Firebase', function ($rootScope, Utility, Security) {
 
         return {
-            saveObject: function (objectName, dataObject) {
+            saveObject: function (objectName, dataObject, fx) {
 
                 //Get ID for new object
                 var newObjectKey = firebase.database().ref().child(objectName).push().key;
@@ -12,17 +12,21 @@ servicesModule
                     name: Security.getUserName(),
                     uid: Security.getUserID(),
                 };
-                
+
                 dataObject["time"] = Utility.getCurrentDate();
                 dataObject["key"] = newObjectKey;
 
                 console.log(dataObject);
 
                 var updates = {};
-                updates['/'+ objectName +'/' + newObjectKey] = dataObject;
+                updates['/' + objectName + '/' + newObjectKey] = dataObject;
 
                 //Save to Database
-                firebase.database().ref().update(updates);
+                firebase.database().ref().update(updates, function (error) {
+                    if(fx){
+                        fx(error);
+                    }
+                });
             }
         }
     });

@@ -1,27 +1,33 @@
-controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $location, Topic) {
+controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $location, Topic, Firebase) {
 
-    $scope.gotoThread = function(item){
+    $scope.gotoThread = function (item) {
         $rootScope.selectedTopic = item;
         $location.path('/app/thread');
     }
 
-    $scope.gotoCategory = function(){
+    $scope.gotoCategory = function () {
         $location.path('/app/category');
+    }
+
+    $scope.GetTrendTopic = function (o) {
+        var temp = o;
+        var o;
+        for (o in temp) {
+
+        }
+        $scope.topic = temp[o];
+        $scope.topic["key"] = o;
     }
 
     $scope.initialize = function () {
 
+        $rootScope.showLoadingIndicator = true;
         Topic.getLastTopic(function (snapshot) {
-            var temp = snapshot.val();
-            console.log(temp);
-            var o;
-            for(o in temp){
-                
-            }
-            $scope.topic = temp[o];
-            $scope.topic["key"] = o;
-            console.log($scope.topic);
+            $rootScope.showLoadingIndicator = false;
+            $scope.GetTrendTopic(snapshot.val());
+
             $scope.$apply();
+
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });

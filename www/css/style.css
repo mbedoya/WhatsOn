@@ -140,3 +140,12 @@ input[type=text]{
     color: #FFF;
     background-color: #EDB458;
 }
+
+.error{
+    background-color: #D4D4AA;
+    color: #FFF;
+    border-radius: 3px;
+    margin: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
