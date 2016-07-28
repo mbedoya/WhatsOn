@@ -29,6 +29,9 @@ servicesModule
                 });
             },
             getObject: function (object, fx, fxError) {
+
+                console.log(object);
+
                 var recentPostsRef = firebase.database().ref(object);
                 recentPostsRef.once("value", fx, fxError);
             }

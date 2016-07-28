@@ -15,6 +15,15 @@ servicesModule
                 Firebase.saveObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, data, fx);
 
                 //Its parent count needs to be updated
+                Firebase.getObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, function (snapshot) {
+                    var nameSnapshot = snapshot.child("count");
+                    var name = nameSnapshot.val();
+                    console.log(snapshot);
+                    console.log(name);
+                    console.log(snapshot.val());
+                }, function error(params) {
+                    
+                });
                 
             },
             attachToChildren: function (fx, fxError) {

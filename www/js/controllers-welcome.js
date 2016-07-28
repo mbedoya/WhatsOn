@@ -9,14 +9,10 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
         $location.path('/app/category');
     }
 
-    $scope.GetTrendTopic = function (o) {
-        var temp = o;
-        var o;
-        for (o in temp) {
-
-        }
-        $scope.topic = temp[o];
-        $scope.topic["key"] = o;
+    $scope.GetTrendTopic = function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            $scope.topic = childSnapshot.val();
+        });
     }
 
     $scope.initialize = function () {
@@ -24,10 +20,8 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
         $rootScope.showLoadingIndicator = true;
         Topic.getLastTopic(function (snapshot) {
             $rootScope.showLoadingIndicator = false;
-            $scope.GetTrendTopic(snapshot.val());
-
+            $scope.GetTrendTopic(snapshot);
             $scope.$apply();
-
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
