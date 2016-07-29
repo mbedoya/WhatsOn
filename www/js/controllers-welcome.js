@@ -10,6 +10,10 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
     }
 
     $scope.test = function () {
+
+        var recentPostsRef = firebase.database().ref(object);
+        recentPostsRef.once("value", , fxError);
+
         //Get ID for new object
         var newObjectKey = "child1";
         var objectName = "test";
