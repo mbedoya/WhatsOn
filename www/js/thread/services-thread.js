@@ -1,6 +1,7 @@
 servicesModule
     .factory('Thread', function ($rootScope, Utility, Firebase, Security) {
 
+        var fb_parent_object_name = 'topics';
         var fb_object_name = 'topic-threads';
 
         return {
@@ -14,13 +15,20 @@ servicesModule
 
                 Firebase.saveObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, data, fx);
 
+                var parentObjectCount = '/'+ fb_parent_object_name +'/' + $rootScope.selectedTopic.key + "/count";
+                console.log(parentObjectCount);
+
                 //Its parent count needs to be updated
-                Firebase.getObject('/'+ fb_object_name +'/' + $rootScope.selectedTopic.key, function (snapshot) {
-                    var nameSnapshot = snapshot.child("count");
-                    var name = nameSnapshot.val();
-                    console.log(snapshot);
-                    console.log(name);
-                    console.log(snapshot.val());
+                Firebase.getObject(parentObjectCount, function (snapshot) {
+ 
+                    //Get Count and add 1
+                    var count = snapshot.val();
+                    if (!count) {
+                        count = 0; 
+                    }
+                    count = count + 1;
+                    Firebase.saveProperty(parentObjectCount, count);
+
                 }, function error(params) {
                     
                 });

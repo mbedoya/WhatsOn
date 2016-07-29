@@ -28,6 +28,18 @@ servicesModule
                     }
                 });
             },
+            saveProperty: function (objectName, dataObject, fx) {
+
+                var updates = {};
+                updates['/' + objectName] = dataObject;
+                
+                //Save to Database
+                firebase.database().ref().update(updates, function (error) {
+                    if(fx){
+                        fx(error);
+                    }
+                });
+            },
             getObject: function (object, fx, fxError) {
 
                 console.log(object);
