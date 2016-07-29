@@ -9,6 +9,28 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
         $location.path('/app/category');
     }
 
+    $scope.test = function () {
+        //Get ID for new object
+        var newObjectKey = "child1";
+        var objectName = "test";
+
+        //Add Basic Data to Objects
+        dataObject = {
+            name: "i am a child",
+            uid: "123"
+        };
+
+        console.log(dataObject);
+
+        var updates = {};
+        updates['/' + objectName + '/' + newObjectKey] = dataObject;
+
+        //Save to Database
+        firebase.database().ref().update(updates, function (error) {
+            console.log(error);
+        });
+    }
+
     $scope.GetTrendTopic = function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
             $scope.topic = childSnapshot.val();
