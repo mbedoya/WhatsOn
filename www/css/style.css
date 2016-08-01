@@ -149,3 +149,16 @@ input[type=text]{
     margin-left: 10%;
     margin-right: 10%;
 }
+
+.item-icon-right .icon {
+    font-size: 15px;
+}
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+    font-size: 13px;
+}

@@ -5,7 +5,8 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
         $location.path('/app/thread');
     }
 
-    $scope.gotoCategory = function () {
+    $scope.gotoCategory = function (item) {
+        $rootScope.selectedCategory = item;
         $location.path('/app/category');
     }
 

@@ -1,6 +1,7 @@
 <ion-view view-title="Whats On">
-    <ion-content >
-        <div class="list">
+    <ion-content>
+
+        <div class="list" >
 
             <div class="item border-bottom">
                 <h2 class="title">Lo más popular</h2>
@@ -27,6 +28,65 @@
                 <h2>{{ category.title }}</h2>
                 <p>{{ category.description }}</p>
                 <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+        </div>
+
+        <div class="list" ng-if="false" >
+
+            <div class="item border-bottom item-thumbnail-left small-thumbnail item-icon-right">
+                <img src="img/eli/female.png" >
+                <h2 class="title">Eliana Pulgarín</h2>
+                <i class="icon green">+430</i>
+            </div>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                <img src="img/eli/grandma.png" >
+                <h2>Visita a la Abuela en su cumpleaños</h2>
+                <i class="icon green">30</i>
+            </a>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                <img src="img/eli/happy.png" >
+                <h2>Sonrisa</h2>
+                <i class="icon green">200</i>
+            </a>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                <img src="img/eli/secret.png" >
+                <h2>Otros no especificados</h2>
+                <i class="icon green">300</i>
+            </a>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                
+                <p>Oportunidades de mejora</p>
+                
+            </a>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                <img src="img/eli/steak.png" >
+                <p>Intento de intoxicación con carne negra</p>
+                <i class="icon red">-20</i>
+            </a>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                <img src="img/eli/soup.png" >
+                <p>Sopas y cremas</p>
+                <i class="icon red">-20</i>
+            </a>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                <img src="img/eli/can.png" >
+                <p>Dieta basada en enlatados</p>
+                <i class="icon red">-10</i>
+            </a>
+
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
+                <img src="img/eli/door.png" >
+                <p>Intento de acceso abusivo a apartamentos de vecinos mientras estos 
+se encuentran en actividades sospechosas</p>
+                <i class="icon red">-50</i>
             </a>
 
         </div>

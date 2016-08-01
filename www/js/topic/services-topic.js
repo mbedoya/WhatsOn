@@ -4,6 +4,8 @@ servicesModule
         //Name of the object root in Firebase
         var fb_object_name = 'topics';
 
+        var fb_parent_name = 'category-topics';
+
         return {
             add: function (topic) {
 
@@ -14,6 +16,8 @@ servicesModule
                 };
 
                 Firebase.saveObject(fb_object_name, data);
+                Firebase.saveObject(fb_parent_name + "/" + $rootScope.selectedCategory.key, data);
+
             },
             attachToChildren: function (fx, fxError) {
 

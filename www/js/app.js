@@ -31,9 +31,9 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
 
     //Initialize App Data
     $rootScope.categories = [
-        {title: 'Polemizar', description: 'Vamos a expresarnos!', dbid: '-KNlqWR1wHkkwFwy6w3G', img: 'chat.png'},
-        {title: 'Salir a callejear', description: '¿Quieres parcharte y no sabes que hacer?', dbid: '-KNlqWRTUXrw_WBX0Tyq', img: 'dancing.png'},
-        {title: 'Conocer gente chévere', description: '¿Quieres sólo hablar?', dbid: '-KNlqWRZBesJ5Pclcixz', img: 'meet.png'}
+        {title: 'Polemizar', description: 'Vamos a expresarnos!', key: '-KNlqWR1wHkkwFwy6w3G', img: 'chat.png'},
+        {title: 'Salir a callejear', description: '¿Quieres parcharte y no sabes que hacer?', key: '-KNlqWRTUXrw_WBX0Tyq', img: 'dancing.png'},
+        {title: 'Conocer gente chévere', description: '¿Quieres sólo hablar?', key: '-KNlqWRZBesJ5Pclcixz', img: 'meet.png'}
     ];
 
     //Initializar User Data
