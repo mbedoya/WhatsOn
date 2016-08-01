@@ -21,6 +21,7 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
       StatusBar.styleDefault();
     }
 
+    //Global Methods
     $rootScope.helpWindow = function(message) {
         var popup = $ionicPopup.alert({
             title: "",
@@ -28,6 +29,14 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
         });
     };
 
+    //Initialize App Data
+    $rootScope.categories = [
+        {title: 'Polemizar', description: 'Vamos a expresarnos!', dbid: '-KNlqWR1wHkkwFwy6w3G', img: 'chat.png'},
+        {title: 'Salir a callejear', description: '¿Quieres parcharte y no sabes que hacer?', dbid: '-KNlqWRTUXrw_WBX0Tyq', img: 'dancing.png'},
+        {title: 'Conocer gente chévere', description: '¿Quieres sólo hablar?', dbid: '-KNlqWRZBesJ5Pclcixz', img: 'meet.png'}
+    ];
+
+    //Initializar User Data
     if(localStorage.wo_name){
         //Init Basic Data
         $rootScope.userProfile = {

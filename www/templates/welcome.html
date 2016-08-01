@@ -22,24 +22,10 @@
                 <h2 class="title">¿Qué quieres hacer?</h2>
             </div>
 
-            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-click="gotoCategory()">
-                <img src="img/chat.png" >
-                <h2>Polemizar</h2>
-                <p>Vamos a expresarnos!</p>
-                <i class="icon ion-ios-arrow-right"></i>
-            </a>
-
-            <a class="item item-thumbnail-left item-icon-right small-thumbnail" href="#">
-                <img src="img/dancing.png" >
-                <h2>Salir a callejear</h2>
-                <p>¿Quieres parcharte y no sabes que hacer?</p>
-                <i class="icon ion-ios-arrow-right"></i>
-            </a>
-
-            <a class="item item-thumbnail-left item-icon-right small-thumbnail" href="#">
-                <img src="img/meet.png" >
-                <h2>Conocer gente ch&eacute;vere</h2>
-                <p>¿Quieres hablar desde la comodidad de tu casa?</p>
+            <a ng-repeat="category in categories" class="item item-thumbnail-left item-icon-right small-thumbnail" ng-click="gotoCategory(category)">
+                <img src="img/{{ category.img }}" >
+                <h2>{{ category.title }}</h2>
+                <p>{{ category.description }}</p>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
 
