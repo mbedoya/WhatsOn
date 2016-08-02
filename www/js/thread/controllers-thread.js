@@ -56,7 +56,7 @@ controllersModule.controller('ThreadCtrl', function ($scope, $rootScope, $locati
         $scope.error = false;
 
         $rootScope.showLoadingIndicator = true;
-        Thread.addMessage($scope.inputMessage.text, function(error){
+        Thread.addMessage($scope.inputMessage.text, function(newKey, error){
             $rootScope.showLoadingIndicator = false;
             if(error){
                 $scope.error = true;

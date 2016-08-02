@@ -24,7 +24,7 @@ servicesModule
                 //Save to Database
                 firebase.database().ref().update(updates, function (error) {
                     if(fx){
-                        fx(error);
+                        fx(newObjectKey, error);
                     }
                 });
             },

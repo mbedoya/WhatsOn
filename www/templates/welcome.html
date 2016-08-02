@@ -3,19 +3,19 @@
 
         <div class="list" >
 
-            <div class="item border-bottom">
+            <div class="item border-bottom" ng-click="test()">
                 <h2 class="title">Lo más popular</h2>
             </div>
 
             <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic" ng-click="gotoThread(topic)">
-                <img src="img/chat.png" >
+                <img src="img/{{categories[0].img}}" >
                 <h2>{{topic.title}} ({{topic.count}})</h2>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
 
-            <a class="item item-thumbnail-left item-icon-right small-thumbnail" href="#">
-                <img src="img/dancing.png" >
-                <h2>Rumba en Trilog&iacute;a (40)</h2>
+            <a class="item item-thumbnail-left item-icon-right small-thumbnail" ng-if="topic2" ng-click="gotoThread(topic2)">
+                <img src="img/{{categories[1].img}}" >
+                <h2>{{topic2.title}} ({{topic2.count}})</h2>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
 

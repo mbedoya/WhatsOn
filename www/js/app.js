@@ -94,7 +94,7 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
                 url: '/category',
                 views: {
                     'app-view': {
-                        templateUrl: 'templates/category.html',
+                        templateUrl: 'templates/topic/category.html',
                         controller: 'CategoryCtrl'
                     }
                 }

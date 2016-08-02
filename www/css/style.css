@@ -1,5 +1,15 @@
 /* Palette https://coolors.co/ebf5df-bad4aa-d4d4aa-edb458-e8871e */
 
+@font-face {
+    font-family: 'Ghostlight';
+    src: url('fonts/Ghostlight-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Corals';
+    src: url('fonts/TT Corals Thin-DEMO.otf');
+}
+
 .bar.bar-balanced {
     border-color: #4281A4;
     background-color: #4281A4;
@@ -16,11 +26,15 @@
 
 .bar .title {
     text-align: left;
-    padding-left: 10px;
+    font-family: 'Ghostlight';
+}
+
+body {
+    font-family: 'Ghostlight';
 }
 
 h2.title{
-    color: #48A9A6;
+    color: #48A9A6; 
 }
 
 input[type=text]{

@@ -3,12 +3,19 @@
         <div class="list">
 
             <div class="item border-bottom">
-                <h2 class="title">Polemizar</h2>
+                <h2 class="title">{{ selectedCategory.title }}</h2>
             </div>
+
+            <a ng-repeat="item in ads" class="item item-thumbnail-left item-icon-right small-thumbnail" >
+                <img src="{{item.img}}" >
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
 
             <a ng-repeat="item in topics" class="item item-thumbnail-left item-icon-right small-thumbnail" ng-click="gotoThread(item)">
                 <img src="img/chat.png" >
-                <p>{{ item.title }} (150)</p>
+                <h2>{{ item.title }} ({{ item.count }})</h2>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
 

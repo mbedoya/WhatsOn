@@ -12,15 +12,24 @@ controllersModule.controller('CategoryCtrl', function ($scope, $rootScope, $loca
     }
 
     $scope.initialize = function () {
+        Topic.getAdsByCategory(function (snapshot) {
+            $scope.ads = snapshot.val();
+            $scope.$apply();
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+        });
 
-        Topic.getAll(function (snapshot) {
+        $rootScope.showLoadingIndicator = true;
+        Topic.getByCategory(function (snapshot) {
+            $rootScope.showLoadingIndicator = false;
             $scope.topics = snapshot.val();
-            console.log($scope.topics);
             $scope.$apply();
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
     }
 
-    $scope.initialize();
+    $scope.$on('$ionicView.enter', function(){
+        $scope.initialize();
+    });
 });
