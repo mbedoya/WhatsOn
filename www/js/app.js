@@ -90,10 +90,21 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
                 }
             })
 
-            .state('app.category', {
-                url: '/category',
+            .state('app.category-tabs', {
+                url: '/category-tabs',
+                abstract: true,
                 views: {
                     'app-view': {
+                        templateUrl: 'templates/topic/category-tabs.html',
+                        controller: 'CategoryTabsCtrl'
+                    }
+                }
+            })
+
+            .state('app.category-tabs.category', {
+                url: '/category',
+                views: {
+                    'popular-content': {
                         templateUrl: 'templates/topic/category.html',
                         controller: 'CategoryCtrl'
                     }

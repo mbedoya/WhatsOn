@@ -37,6 +37,14 @@ servicesModule
                 // Attach an asynchronous callback to read the data at our posts reference
                 recentPostsRef.once("value", fx, fxError);
             },
+            getPopularByCategory: function (fx, fxError) {
+
+                console.log("getting populars");
+                var recentPostsRef = firebase.database().ref(fb_object_name + "/" + $rootScope.selectedCategory.key);
+
+                // Attach an asynchronous callback to read the data at our posts reference
+                recentPostsRef.orderByChild("count").once("value", fx, fxError);
+            },
             getAdsByCategory: function (fx, fxError) {
 
                 var recentPostsRef = firebase.database().ref(fb_ads_name + "/" + $rootScope.selectedCategory.key).limitToLast(20);

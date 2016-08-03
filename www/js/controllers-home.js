@@ -1,6 +1,9 @@
 controllersModule.controller('HomeCtrl', function ($scope, $rootScope, $location, Topic, Firebase) {
 
     $scope.test = function () {
+
+        return;
+
         //Add Ads
         var data = {
             title: 'Locura McDonalds',
@@ -19,7 +22,7 @@ controllersModule.controller('HomeCtrl', function ($scope, $rootScope, $location
 
     $scope.gotoCategory = function (item) {
         $rootScope.selectedCategory = item;
-        $location.path('/app/category');
+        $location.path('/app/category-tabs/category');
     }
 
     $scope.initialize = function () {

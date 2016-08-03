@@ -20,7 +20,7 @@ controllersModule.controller('CategoryCtrl', function ($scope, $rootScope, $loca
         });
 
         $rootScope.showLoadingIndicator = true;
-        Topic.getByCategory(function (snapshot) {
+        Topic.getPopularByCategory(function (snapshot) {
             $rootScope.showLoadingIndicator = false;
             $scope.topics = snapshot.val();
             $scope.$apply();
