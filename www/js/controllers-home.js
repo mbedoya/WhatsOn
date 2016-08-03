@@ -1,4 +1,4 @@
-controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $location, Topic, Firebase) {
+controllersModule.controller('HomeCtrl', function ($scope, $rootScope, $location, Topic, Firebase) {
 
     $scope.test = function () {
         //Add Ads
@@ -22,25 +22,13 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
         $location.path('/app/category');
     }
 
-    $scope.GetTrendTopic = function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            $scope.topic = childSnapshot.val();
-        });
-    }
-
-    $scope.GetTrendTopic2 = function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-            $scope.topic2 = childSnapshot.val();
-        });
-    }
-
     $scope.initialize = function () {
 
         //Get Topic 0
         $rootScope.showLoadingIndicator = true;
-        Topic.getLastTopicByCategory($rootScope.categories[0].key, function (snapshot) {
+        Topic.getLastTopicByCategory($rootScope.categories[0].key, function (topic) {
             $rootScope.showLoadingIndicator = false;
-            $scope.GetTrendTopic(snapshot);
+            $scope.topic = topic;
             $scope.$apply();
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
@@ -48,9 +36,9 @@ controllersModule.controller('WelcomeCtrl', function ($scope, $rootScope, $locat
 
         //Get Topic 1
         $rootScope.showLoadingIndicator = true;
-        Topic.getLastTopicByCategory($rootScope.categories[1].key, function (snapshot) {
+        Topic.getLastTopicByCategory($rootScope.categories[1].key, function (topic) {
             $rootScope.showLoadingIndicator = false;
-            $scope.GetTrendTopic2(snapshot);
+            $scope.topic2 = topic;
             $scope.$apply();
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);

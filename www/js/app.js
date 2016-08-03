@@ -70,12 +70,12 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
                 controller: 'AppCtrl'
             })
 
-            .state('app.welcome', {
-                url: '/welcome',
+            .state('app.home', {
+                url: '/home',
                 views: {
                     'app-view': {
-                        templateUrl: 'templates/welcome.html',
-                        controller: 'WelcomeCtrl'
+                        templateUrl: 'templates/home.html',
+                        controller: 'HomeCtrl'
                     }
                 }
             })
@@ -132,7 +132,7 @@ angular.module('whatson', ['ionic', 'whatson.controllers', 'whatson.services', '
 
             ;
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/app/welcome');
+        $urlRouterProvider.otherwise('/app/home');
     });
 
 angular.module('whatson.controllers');

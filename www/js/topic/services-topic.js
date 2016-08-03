@@ -17,7 +17,7 @@ servicesModule
 
                 //Save Topic Data
                 Firebase.saveObject(fb_object_name + "/" + $rootScope.selectedCategory.key, data, function (objectKey, error) {
-                    if(fx){
+                    if (fx) {
                         fx(objectKey, error);
                     }
                 });
@@ -46,10 +46,25 @@ servicesModule
             },
             getLastTopicByCategory: function (category, fx, fxError) {
 
-                var recentPostsRef = firebase.database().ref(fb_object_name + "/" + category).limitToLast(1).orderByChild("count");
+                var recentPostsRef = firebase.database().ref(fb_object_name + "/" + category).limitToLast(20);
 
                 // Attach an asynchronous callback to read the data at our posts reference
-                recentPostsRef.once("value", fx, fxError);
+                recentPostsRef.once("value", function (snapshot) {
+
+                    var maxCount = -1;
+                    var maxTopic;
+                    snapshot.forEach(function (childSnapshot) {
+                        var topic = childSnapshot.val();
+
+                        if(topic.count > maxCount){
+                            maxCount = topic.count;
+                            maxTopic = topic;
+                        }
+                    });
+
+                    fx(maxTopic);
+
+                }, fxError);
             }
         }
     });
