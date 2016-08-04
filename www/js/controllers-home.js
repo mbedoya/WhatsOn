@@ -58,8 +58,6 @@ controllersModule.controller('HomeCtrl', function ($scope, $rootScope, $location
     $scope.$on('AppReady', function (event, args) {
 
         console.log("Home AppReady");
-
-        $rootScope.appReady = true;
-        $scope.inicializar();
+        $scope.initialize();
     });
 });
