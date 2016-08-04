@@ -55,6 +55,11 @@ var mainModule = angular.module('whatson', ['ionic', 'whatson.controllers', 'wha
         }
     }
 
+    $rootScope.appReady = true;
+    $rootScope.$broadcast('AppReady');
+
+    console.log("AppReady");
+
   });
 })
 

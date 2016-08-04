@@ -27,27 +27,41 @@ controllersModule.controller('HomeCtrl', function ($scope, $rootScope, $location
 
     $scope.initialize = function () {
 
-        //Get Topic 0
-        $rootScope.showLoadingIndicator = true;
-        Topic.getLastTopicByCategory($rootScope.categories[0].key, function (topic) {
-            $rootScope.showLoadingIndicator = false;
-            $scope.topic = topic;
-            $scope.$apply();
-        }, function (errorObject) {
-            console.log("The read failed: " + errorObject.code);
-        });
+        console.log("Home Init");
 
-        //Get Topic 1
-        $rootScope.showLoadingIndicator = true;
-        Topic.getLastTopicByCategory($rootScope.categories[1].key, function (topic) {
-            $rootScope.showLoadingIndicator = false;
-            $scope.topic2 = topic;
-            $scope.$apply();
-        }, function (errorObject) {
-            console.log("The read failed: " + errorObject.code);
-        });
+        if ($rootScope.appReady && !$scope.loaded) {
+            
+            $scope.loaded = true;
 
+            //Get Topic 0
+            $rootScope.showLoadingIndicator = true;
+            Topic.getLastTopicByCategory($rootScope.categories[0].key, function (topic) {
+                $rootScope.showLoadingIndicator = false;
+                $scope.topic = topic;
+                $scope.$apply();
+            }, function (errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+
+            //Get Topic 1
+            $rootScope.showLoadingIndicator = true;
+            Topic.getLastTopicByCategory($rootScope.categories[1].key, function (topic) {
+                $rootScope.showLoadingIndicator = false;
+                $scope.topic2 = topic;
+                $scope.$apply();
+            }, function (errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+        }
     }
 
     $scope.initialize();
+
+    $scope.$on('AppReady', function (event, args) {
+
+        console.log("Home AppReady");
+
+        $rootScope.appReady = true;
+        $scope.inicializar();
+    });
 });
