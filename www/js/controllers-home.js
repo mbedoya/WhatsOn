@@ -29,9 +29,7 @@ controllersModule.controller('HomeCtrl', function ($scope, $rootScope, $location
 
         console.log("Home Init");
 
-        if ($rootScope.appReady && !$scope.loaded) {
-            
-            $scope.loaded = true;
+        if ($rootScope.appReady) {
 
             //Get Topic 0
             $rootScope.showLoadingIndicator = true;

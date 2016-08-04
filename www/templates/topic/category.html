@@ -2,10 +2,6 @@
     <ion-content >
         <div class="list">
 
-            <div class="item border-bottom">
-                <h2 class="title">{{ selectedCategory.title }}</h2>
-            </div>
-
             <a ng-repeat="item in ads" class="item item-thumbnail-left item-icon-right small-thumbnail" >
                 <img src="{{item.img}}" >
                 <h2>{{ item.title }}</h2>
@@ -14,7 +10,7 @@
             </a>
 
             <a ng-repeat="item in topics" class="item item-thumbnail-left item-icon-right small-thumbnail category" ng-click="gotoThread(item)">
-                <img src="img/chat.png" >
+                <img src="img/{{selectedCategory.img}}" >
                 <h2>{{ item.title }} ({{ item.count }})</h2>
                 <p>{{ item.creator.name }}, creado {{getDateText(item)}}</p>
                 <i class="icon ion-ios-arrow-right"></i>
