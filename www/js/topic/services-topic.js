@@ -39,11 +39,17 @@ servicesModule
             },
             getPopularByCategory: function (fx, fxError) {
 
-                console.log("getting populars");
-                var recentPostsRef = firebase.database().ref(fb_object_name + "/" + $rootScope.selectedCategory.key);
+                var recentPostsRef = firebase.database().ref(fb_object_name);
 
                 // Attach an asynchronous callback to read the data at our posts reference
-                recentPostsRef.orderByChild("count").once("value", fx, fxError);
+                recentPostsRef.child($rootScope.selectedCategory.key).orderByChild("count").limitToLast(20).once("value", fx, fxError);
+            },
+            getRecentByCategory: function (fx, fxError) {
+
+                var recentPostsRef = firebase.database().ref(fb_object_name);
+
+                // Attach an asynchronous callback to read the data at our posts reference
+                recentPostsRef.child($rootScope.selectedCategory.key).limitToLast(20).once("value", fx, fxError);
             },
             getAdsByCategory: function (fx, fxError) {
 

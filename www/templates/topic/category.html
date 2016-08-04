@@ -13,9 +13,10 @@
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
 
-            <a ng-repeat="item in topics" class="item item-thumbnail-left item-icon-right small-thumbnail" ng-click="gotoThread(item)">
+            <a ng-repeat="item in topics" class="item item-thumbnail-left item-icon-right small-thumbnail category" ng-click="gotoThread(item)">
                 <img src="img/chat.png" >
                 <h2>{{ item.title }} ({{ item.count }})</h2>
+                <p>{{ item.creator.name }}, {{getDateText(item)}}</p>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
 
